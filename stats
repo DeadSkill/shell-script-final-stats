@@ -1,0 +1,30 @@
+function test() {
+	if [ ! -f output.txt ]
+ 	then
+ 		touch output.txt
+ 	fi
+ 
+ 	wget -O /dev/null $1 &> output.txt
+ 
+ 	LINE=`tail -2 output.txt | cut -d '(' -f 2 | cut -d ')' -f 1`
+ 
+ 	echo $LINE
+ 
+ 	rm output.txt
+}
+
+if [ $# != 0 ] && [ $1 = "log" ]
+then
+	if [ ! -f ~/.server_log ]
+	then
+		touch ~/server_log
+	fi
+	tail -f ~/server_log
+elif [ $# != 0 ] && [ $1 ]
+then
+	DOWNLOAD=$1
+	test $DOWNLOAD
+else
+	DOWNLOAD="http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
+	test $DOWNLOAD
+fi
