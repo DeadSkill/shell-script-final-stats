@@ -1,30 +1,38 @@
+# Prend en paramètres le lien du fichier à télécharger
 function test() {
 	if [ ! -f output.txt ]
  	then
  		touch output.txt
  	fi
+
+	if [ ! -f ~/.server_log ]
+	then
+		touch ~/.server_log
+	fi
  
  	wget -O /dev/null $1 &> output.txt
  
  	LINE=`tail -2 output.txt | cut -d '(' -f 2 | cut -d ')' -f 1`
  
- 	echo $LINE
+ 	echo $LINE >> ~/.server_log
  
  	rm output.txt
 }
 
-if [ $# != 0 ] && [ $1 = "log" ]
+if [ $# != 0 ] && [ $1 = "log" ] # Si l'argument passé est "log" alors on affiche les logs
 then
 	if [ ! -f ~/.server_log ]
 	then
 		touch ~/server_log
 	fi
-	tail -f ~/server_log
-elif [ $# != 0 ] && [ $1 ]
+	tail -f ~/.server_log
+	exit
+fi
+
+DOWNLOAD="http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
+if [ $# = 1 ] && [ $1 != "log" ]
 then
 	DOWNLOAD=$1
-	test $DOWNLOAD
-else
-	DOWNLOAD="http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
-	test $DOWNLOAD
 fi
+
+test $DOWNLOAD
