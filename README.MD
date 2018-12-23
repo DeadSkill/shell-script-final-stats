@@ -27,7 +27,7 @@ $ ./stats log
 `stats log` : Permet d'afficher le log.
 
 ## But
-Le but est de pouvoir visualiser la variation du débit descendant au fur-et-à-mesure du temps. C'est pour cela qu'il est pertinent pour l'utilisateur de lancer le script depuis le cron.
+Le but est de pouvoir visualiser la variation du débit descendant au cours du temps. Il serait donc pertinent que l'utilisateur fasse de ce script une tâche cron (pour ajouter une tâche, lancer la commande `crontab -e`).
 
 ## Equipe
 [Thomas Flitterman](https://github.com/tofl)
