@@ -23,7 +23,7 @@ if [ $# != 0 ] && [ $1 = "log" ] # Si l'argument passé est "log" alors on affic
 then
 	if [ ! -f ~/.server_log ]
 	then
-		touch ~/server_log
+		touch ~/.server_log
 	fi
 	tail -f ~/.server_log
 	exit
