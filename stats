@@ -14,7 +14,7 @@ function test() {
  
  	LINE=`tail -2 output.txt | cut -d '(' -f 2 | cut -d ')' -f 1`
  
- 	echo $LINE >> ~/.server_log
+ 	echo -e "[$(date)] \t $LINE" >> ~/.server_log
  
  	rm output.txt
 }
