@@ -4,6 +4,14 @@
 ## Description
 Permet de d'obtenir un log du débit descendant. Le fichier de log est automatiquement créé dans le dossier home sous le nom `.server_log` s'il n'existe pas déjà.
 
+Exemple de fichier log :
+```
+$ ./stats log
+[Sun Dec 23 20:18:40 CET 2018] 	 5.09 MB/s
+[Sun Dec 23 20:19:08 CET 2018] 	 5.41 MB/s
+[Sun Dec 23 20:19:15 CET 2018] 	 4.61 MB/s
+```
+
 ## Options
 `./stats` : Le test se fait en téléchargeant, par défaut, un fichier de 10Mo (le fichier n'est pas conservé).
 
